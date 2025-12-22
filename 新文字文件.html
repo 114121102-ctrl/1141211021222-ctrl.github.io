@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>慈濟大學 Tzu Chi University - 人文與專業並重</title>
+    <style>
+        /* --- CSS 變數定義 (慈濟色系) --- */
+        :root {
+            --primary-color: #00695c; /* 慈濟綠/深青色 */
+            --secondary-color: #4db6ac; /* 淺青色 */
+            --accent-color: #f4f4f9;    /* 淺灰背景 */
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        /* --- 全局設定 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- 導覽列 --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero 區塊 (首頁大圖) --- */
+        .hero {
+            background: linear-gradient(rgba(0, 105, 92, 0.8), rgba(0, 105, 92, 0.6)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #e0e0e0;
+        }
+
+        /* --- 通用區塊設定 --- */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0 auto;
+        }
+
+        /* --- 關於我們 --- */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- 學院特色 (卡片) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            background-color: #263238; /* 深灰藍 */
+            color: #eceff1;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer .social-links a {
+            color: var(--secondary-color);
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        /* 手機版選單調整 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 簡易版隱藏選單，實際專案可加漢堡選單 */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                TCU <span>慈濟大學</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">關於慈大</a></li>
+                <li><a href="#academics">學術領域</a></li>
+                <li><a href="#spirit">校園人文</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>慈悲喜捨，學以致用</h1>
+        <p>立足花蓮，放眼國際。培養具備專業素養與人文關懷的優秀人才。</p>
+        <a href="https://www.tcu.edu.tw/" target="_blank" class="btn">進入官方網站</a>
+    </div>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>關於慈大</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="慈濟大學校園">
+            </div>
+            <div class="about-text">
+                <p><strong>慈濟大學 (Tzu Chi University)</strong> 創立於 1994 年，位於台灣花蓮，是一所由佛教慈濟慈善事業基金會創辦的綜合型大學。</p>
+                <p>我們堅持「教育完全化」的理念，不僅重視專業知識的傳授，更強調品德教育與人文精神的涵養。校園環境優美，背倚中央山脈，前瞻太平洋，是潛心治學的最佳場域。</p>
+                <p>校訓「慈悲喜捨」引領著師生投入社會服務與志工活動，讓知識轉化為對社會具體的貢獻。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="academics" style="background-color: #f8f9fa;">
+        <div class="section-title">
+            <h2>重點學術領域</h2>
+            <div class="line"></div>
+        </div>
+        <div class="features-grid">
+            <div class="card">
+                <div class="card-icon">⚕️</div>
+                <h3>醫學與護理</h3>
+                <p>擁有完整的醫學教育體系，結合慈濟醫院的臨床資源，培育視病猶親的醫療專業人才。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧬</div>
+                <h3>生命科學</h3>
+                <p>致力於生物醫學基礎研究，探索生命奧秘，並應用於疾病預防與治療。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📖</div>
+                <h3>人文社會</h3>
+                <p>涵蓋東方語文、傳播、社會工作等領域，強調人本關懷與社會實踐。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3>教育傳播</h3>
+                <p>培育具備國際視野與利他精神的教育工作者與媒體專業人才。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="spirit">
+        <div class="section-title">
+            <h2>獨特人文精神</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-content" style="flex-direction: row-reverse;">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="志工服務">
+            </div>
+            <div class="about-text">
+                <h3>志工服務與懿德母姊</h3>
+                <p>慈濟大學最獨特的特色之一是「懿德母姊會」制度。由慈濟志工組成的懿德爸媽，以輔導員的角色陪伴學生成長，提供生活上的關懷與人生經驗的分享。</p>
+                <p>此外，學校鼓勵學生參與國內外志工服務、國際賑災與偏鄉醫療，落實「做中學，學中覺」的教育理念。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3>慈濟大學 Tzu Chi University</h3>
+        <p>地址：970302 花蓮市中央路三段701號</p>
+        <p>電話：03-856-5301</p>
+        <br>
+        <p>&copy; 2023 Tzu Chi University Introduction Demo. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
